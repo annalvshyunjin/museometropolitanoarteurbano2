@@ -1,0 +1,37 @@
+.download-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.download-button a {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color1);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+.download-button a:hover {
+  background-color: var(--color2);
+  transform: scale(1.05);
+  animation: pulse 1s infinite;
+}
+
+.download-button .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
