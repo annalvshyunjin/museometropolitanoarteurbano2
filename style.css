@@ -1,0 +1,160 @@
+.download-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.download-button a {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color1);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+.download-button a:hover {
+  background-color: var(--color2);
+  transform: scale(1.05);
+  animation: pulse 1s infinite;
+}
+
+.download-button .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.gallery img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+  .calma-list {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    animation: fadeInUp 1.2s both;
+  }
+  .calma-list li {
+    margin: 8px 0;
+  }
+  .btn-emergencia {
+    display: inline-block;
+    margin-top: 20px;
+    background: #c62828;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .btn-emergencia:hover {
+    background: #e53935;
+    transform: scale(1.05);
+  }
+  .volver-arriba {
+    display: inline-block;
+    margin-top: 30px;
+    background: var(--color1);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .volver-arriba:hover {
+    background: #b3441d;
+    transform: scale(1.05);
+  }
+
+  header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Fondo con imagen animada */
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('img/museo_urbano.jpg') center/cover no-repeat;
+  animation: bgZoom 30s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+/* Capa oscura para mejorar contraste del texto */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  z-index: -1;
+}
+
+/* Animación de zoom */
+@keyframes bgZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+
+/* Animación de entrada para título y subtítulo */
+header h1, header p {
+  position: relative;
+  z-index: 1;
+  animation: slideFadeIn 1.8s forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+header h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  animation-delay: 0.2s;
+}
+
+header p {
+  max-width: 700px;
+  font-size: 1.25rem;
+  animation-delay: 0.5s;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

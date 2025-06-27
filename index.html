@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museo Metropolitano de Arte Urbano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --color1:#d05421; --color2:#8f9c67; --text:#ffffff; }
+    *{box-sizing:border-box;scroll-behavior:smooth;transition:all .5s ease;}
+    body{margin:0;font-family:'Ysabeau Office',sans-serif;background:var(--color2);color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;gap:25px;flex-wrap:wrap;align-items:center;padding:15px 10px;background:var(--color1);z-index:1000;}
+    nav a{color:var(--text);text-decoration:none;font-weight:bold;}
+    nav a:hover{opacity:.8;}
+
+    /* HEADER con animación de zoom */
+    header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;text-align:center;overflow:hidden;}
+    /* Capa de imagen animada */
+    header::after{content:"";position:absolute;inset:0;background:url('img/museo_urbano.jpg') center/cover no-repeat;animation:bgZoom 30s ease-in-out infinite alternate;z-index:-2;}
+    /* Capa de oscurecimiento */
+    header::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:-1;}
+    @keyframes bgZoom{0%{transform:scale(1);}100%{transform:scale(1.12);}}
+    header h1,header p{position:relative;z-index:1;animation:slideFadeIn 1.8s forwards;opacity:0;transform:translateY(40px);} 
+    header h1{font-size:3.5rem;margin:0;animation-delay:.2s;} 
+    header p{max-width:700px;font-size:1.25rem;animation-delay:.5s;}
+    @keyframes slideFadeIn{to{opacity:1;transform:translateY(0);}}
+
+    /* SECTIONS genéricos */
+    section{padding:90px 20px;text-align:center;animation:fadeInUp 1s both;}
+    section h2{color:var(--color1);font-size:2.4rem;margin-bottom:35px;animation:bounceIn 1.3s;}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes bounceIn{0%{opacity:0;transform:scale(.3);}50%{transform:scale(1.05);}70%{transform:scale(.9);}100%{opacity:1;transform:scale(1);}}
+
+    /* GALERÍA */
+    .gallery{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:30px;}
+    .gallery img{width:250px;height:250px;object-fit:cover;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.4);cursor:pointer;}
+    .gallery img:hover{transform:scale(1.05);}
+
+    /* MODAL mapas */
+    #imgModal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(208,84,33,0.9);align-items:center;justify-content:center;}
+    #imgModal img{max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.6);}
+    #imgModal span{position:absolute;top:20px;right:30px;font-size:40px;color:var(--text);cursor:pointer;}
+
+    /* CALMA */
+    .calma-list{max-width:600px;margin:0 auto;text-align:left;}
+    .calma-list li{margin:8px 0;}
+    .btn-emergencia{display:inline-block;margin-top:20px;background:#c62828;color:#fff;padding:12px 25px;border-radius:8px;font-weight:bold;text-decoration:none;}
+    .btn-emergencia:hover{background:#e53935;transform:scale(1.05);}
+    .volver-arriba{display:inline-block;margin-top:30px;background:var(--color1);color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;}
+    .volver-arriba:hover{background:#b3441d;transform:scale(1.05);}
+
+    /* FLOTANTES */
+    .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50%;padding:15px;font-size:24px;text-decoration:none;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,.3);} 
+    .language-switcher{position:fixed;top:85px;right:20px;background:var(--color1);color:var(--text);border-radius:6px;padding:8px 12px;cursor:pointer;z-index:1000;} 
+
+    footer{background:var(--color1);padding:35px 20px;text-align:center;color:var(--text);} 
+    @media(max-width:600px){header h1{font-size:2.4rem;}nav{gap:12px;}}
+  </style>
+</head>
+<body>
+  <a class="whatsapp" href="https://wa.me/5493510000000" target="_blank" aria-label="Chat en WhatsApp">💬</a>
+  <div class="language-switcher" onclick="alert('Traducción EN próximamente')">🌐 EN</div>
+
+  <nav>
+    <a href="#galeria">Galería</a>
+    <a href="#actividades">Actividades</a>
+    <a href="#exposiciones">Exposiciones</a>
+    <a href="#recorridos">Recorridos</a>
+    <a href="#mapa-museo">Mapa</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#audio">Audios</a>
+    <a href="#calma">Calma</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#ubicacion">Ubicación</a>
+  </nav>
+
+<header style="background: url('img/museo.jpg') center/cover no-repeat; position: relative; text-align: center;">
+  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 0;"></div>
+  <h1 style="position: relative; z-index: 1;">Museo Metropolitano de Arte Urbano</h1>
+  <p style="position: relative; z-index: 1;">Un espacio cultural vibrante en Plaza España, Córdoba.</p>
+</header>
+
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="img/portada-ph.roger-berta.jpg" alt="Arte urbano">
+      <img src="img/MAR4288-18-eM.jpg" alt="Mural">
+      <img src="img/4-Z8bwJw1_2000x1500__1.jpg" alt="Street Art">
+    </div>
+  </section>
+
+  <section id="actividades">
+    <h2>Actividades</h2>
+    <div class="cards">
+      <div class="card">Talleres de arte urbano</div>
+      <div class="card">Charlas con artistas</div>
+      <div class="card">Eventos mensuales</div>
+    </div>
+  </section>
+
+  <section id="exposiciones">
+    <h2>Exposiciones</h2>
+    <div class="cards">
+      <div class="card">Arte local contemporáneo</div>
+      <div class="card">Grafitis históricos</div>
+      <div class="card">Instalaciones interactivas</div>
+    </div>
+  </section>
+
+  <section id="recorridos">
+    <h2>Recorridos</h2>
+    <p>Recorridos guiados los fines de semana a las 11h, 14h y 17h.</p>
+  </section>
+
+  <section id="horarios">
+    <h2>Horarios y Afluencia</h2>
+    <p><strong>Alta concurrencia:</strong> Sábados y domingos de 15h a 18h.</p>
+    <p><strong>Menor afluencia:</strong> Miércoles y jueves de 10h a 12h.</p>
+  </section>
+
+  <section id="audio">
+  <h2>Visita Guiada</h2>
+  <p>
+    Disfrutá de esta narración para acompañarte durante tu recorrido por el museo:
+  </p>
+  <audio controls>
+    <source src="audio/visita guiada.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+</section>
+
+  <section id="audio">
+  <h2>Muestra 1</h2>
+  <p>
+    Disfrutá de esta narración para acompañarte durante tu recorrido por el museo:
+  </p>
+  <audio controls>
+    <source src="audio/muestra 1.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+</section>
+
+<section id="mapa-museo">
+  <h2>Mapa del Museo</h2>
+  <p>Consultá las ubicaciones clave dentro del Museo Metropolitano de Arte Urbano. Podés ampliar cada imagen para ver los detalles del recorrido.</p>
+
+  <div class="gallery">
+    <img src="img/Mapa esp p1.png" alt="Mapa piso 1 - español" onclick="openModal(this)">
+    <img src="img/Mapa esp p2.png" alt="Mapa piso 2 - español" onclick="openModal(this)">
+    <img src="img/Mapa eng p1.png" alt="Mapa piso 1 - ingles" onclick="openModal(this)">
+    <img src="img/Mapa eng p2.png" alt="Mapa piso 2 - ingles" onclick="openModal(this)">
+    <img src="img/Mapa por p1.png" alt="Mapa piso 1 - portugues" onclick="openModal(this)">
+    <img src="img/Mapa por p2.png" alt="Mapa piso 2 - portugues" onclick="openModal(this)">
+  </div>
+</section>
+
+  <div id="imgModal">
+    <span onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="Mapa ampliado">
+  </div>
+
+  <script>
+    function openModal(img){
+      document.getElementById('imgModal').style.display='flex';
+      document.getElementById('modalImg').src=img.src;
+      document.body.style.overflow='hidden';
+    }
+    function closeModal(){
+      document.getElementById('imgModal').style.display='none';
+      document.body.style.overflow='auto';
+    }
+  </script>
+</body>
+</html>
+
+  <section id="comentarios">
+    <h2>Opiniones</h2>
+    <div class="cards">
+      <div class="card">“Una experiencia artística única.” – Lucía</div>
+      <div class="card">“Increíble muestra de arte urbano.” – Tomás</div>
+      <div class="card">“Ideal para conocer artistas locales.” – Carla</div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form onsubmit="event.preventDefault(); alert('Mensaje enviado correctamente');">
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea placeholder="Mensaje" required></textarea>
+      <input type="submit" value="Enviar">
+    </form>
+  </section>
+
+<section id="calma">
+  <h2>Espacio de Calma y Apoyo</h2>
+  <p>Si te sentís ansioso o abrumado, te recomendamos:</p>
+  <ul class="calma-list">
+    <li>Respirar profundamente durante 3 segundos, sostener 3 segundos y exhalar 3 segundos.</li>
+    <li>Identificar 5 objetos a tu alrededor para anclar tu mente al presente.</li>
+    <li>Acercarte al patio interno para tomar aire y luz natural.</li>
+    <li>Hablar con nuestro personal, siempre dispuesto a ayudarte.</li>
+  </ul>
+  <a href="tel:135" class="btn-emergencia">📞 Línea de ayuda 135</a>
+  <p style="margin-top:10px;font-size:.9rem;">
+    (Centro de Asistencia al Suicida – 24 h, gratuito desde Argentina). Si la emergencia es grave, llamá al 
+    <a href="tel:911" style="color:#fff;text-decoration:underline;">911</a>.
+  </p>
+  <a href="#" class="volver-arriba">⬆️ Volver arriba</a>
+</section>
+
+
+  <section id="ubicacion">
+    <h2>¿Dónde estamos?</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11097.067177053944!2d-64.1912163!3d-31.4253147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a28f35f34d41%3A0x3c0c83fdba8bba6a!2sPlaza%20Espa%C3%B1a%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1620254790964!5m2!1ses-419!2sar" allowfullscreen loading="lazy"></iframe>
+  </section>
+
+<footer>
+    <p>&copy; 2025 Museo Metropolitano de Arte Urbano - Córdoba, Argentina</p>
+  </footer>
